@@ -1,0 +1,197 @@
+selectors are ways of grabbing and manipulating html.
+                                    ELEMENT selectors
+EX: To grab a paragraph and change its color,
+you would type 
+p {
+    color: red;
+}
+                            CLASS Selector 
+To select elements within a certain class name
+There are class heirarchies
+example <p class="aclass">Some Text</p>
+                            ID Selector 
+superior to class, but can only be used on one element at a time,
+and is selected with the # symbol. It is possible to use more than once though
+example 
+<p id="something">Some Text</p>
+
+ use a # for ids
+
+ open brackets for coding
+
+ class is superior to header
+ id is superior to class
+ inline styling is superior to class
+ HOW TO USE CLASSES AND IDS IN HTML USING CSS
+prefix for a class is . and you select it by typing its name in 
+then in the curly brackets u type the properties
+select ids with #
+end string with ; when dealing with properties
+                                ADVANCED SELECTORS
+General Sibling Selector selects elements directly after one another in the same family. 
+Example:
+USE THIS IN CSS
+textarea ~ button {
+    
+}
+TO CHANGE THIS IN HTML
+<form>
+    <input type="text" placeholder="Full Name">
+    <input type="email" placeholder="Email">
+    <textarea></textarea>
+    <button>Submit</button>
+</form>
+Adjacent Sibling Selector selects elements that diirectly follow another element.
+Example: 
+USE THIS IN css
+h2 + a {
+
+}
+TO CHANGE THIS IN HTML
+<h2>Heading 2.</h2>
+<a href="https://pornhub.com" target="_blank" id="porn">porn</a>
+CHILD SELECTOR
+Selects every child of an element.
+EXAMPLE: 
+USE THIS IN css
+ul > li {
+    
+}
+TO CHANGE THIS IN <html>
+    <ul>
+        <li>List item.</li>
+    </ul>
+DESCENDANT SELECTOR
+Used to select items inside of elements as children
+EXAMPLE: 
+Use this in CSS
+ul li {
+    
+}
+TO CHANGE THIS IN html
+<ul>
+    <li>List item.</li>
+    <li><ol>
+        <li>List Item.</li>
+    </ol></li>
+</ul>
+ATTRIBUTE SELECTORS
+Uses the attributes of elements to change their values
+EXAMPLE USE THIS IN CSS 
+img[src="blah.jpg"]
+p[id="beep"]
+etc
+SO 
+h2[class=subtitle]{
+    color: blue;
+}
+Would change this in <HTML>
+ <h2 class="subtitle">Text</h2>
+to a blue color
+TO SELECT TWO IMAGES THAT START WITH SAME SOURCE BUT ARENT EXACT
+DO 
+img[src^="start of source" {
+    border: 10px black;
+}
+it has to be exact
+but that would change any photo with that starting chain to have a 
+border
+
+another way to search is using the * instead of ^, but instead searches for 
+anywhere in the image.
+For example, if i had two images 
+<img src="OIP.jpg">
+<img src="OENFIANFOIPDAN.jpg">
+and I used the string 
+img[src*="OIP"] {}
+It would still select both because they both contain OIP
+
+You can add multiple classes to elements seperated by spaces
+limited to a very small number of attributes using spaces
+
+<h2 class="subtitle article-subtitle">Text</h2>
+
+h2[class~=article-subtitle]{
+
+}
+
+                                                          PROPERTIES
+Properties are contained within selectors {
+   like this, and they target the element
+}
+They always use a colon and a semicolon
+the colon comes after the property, and the semicolon comes
+after the value.
+
+in color: green; COLOR is the property, and GREEN is the value.
+There are many properties and values, with many different uses
+
+                                    GENERAL CSS RULES
+Selectors and properties work together 
+THERE are three parts to the selector 
+
+The selector itself, 
+the curly braces, and the properties.
+
+selector {
+    property: value;
+    property2: value2;
+}
+                                                                    CSS BLOCK
+After you select something, you have to define its styles. 
+Inbetween the curly braces is where the styles go, which is called
+a block.
+You can have more than one property, which means you could change 
+background, color, and fontsize all at once.
+This basic form is kept for almost all css code.
+                                                                   styling
+Coloring in General and techniques
+there are colors given by name, and also more than the names
+there are three different types of colors
+#1 are the CSS color codes (the names)
+#2 are the Hex Codes (#19abf5) 3 groups of 2 numbers representing r, g, and b
+numbers go from 1-9 to a-f which means ff would be most of a color and 11 would be less
+#3 are RGB codes, which are formatted in r,g,b and the numbers go from 0-255 
+
+                                                                    COLORING TEXT
+selector {
+    color:color;
+    background:color;
+}
+to change background of all, then put body as selector
+                                                                BACKGROUNDS
+to use an image as a background, use the image address 
+THEN 
+use property background, then as the value, put url("")
+and paste the image into the quotations
+instead of pasting the image address, you can also use a regular 
+image url, locally
+
+You can also use very specific properties that stand for 
+very specific values
+    background-img, which only works for url("") values
+    background-color, which only works for rgb values
+
+To get rid of image repeating on image backgrounds, you can use
+background-repeat: no-repeat
+but that makes it only take up a small box.
+so, you will need to resize the image using this cmd
+    background-size: height width;
+or by using the value contain or cover
+Cover stretches the image to cover the full width
+contain makes the image as big as it can without messing with proportions
+                                                                                OPACITY/TRANSPARENCY
+IN RGB THERE ARE 3 COLOR VALUES AND ONE HIDDEN VALUE KNOWN AS THE ALPHA VALUE
+AFTER THE FINAL VALUE, ANY VALUE BETWEEN 0-1 WILL CHANGE OPACITY OF
+YOUR COLORING
+                                                                                GRADIENTS
+Radial gradients are circular
+    Selector {
+        prop: radial-gradient(color min%, color med%, color big%)
+    }
+    to specify shape type the name before colors in the parentheses
+Linear gradients are smooth transitions
+    Selector {
+        prop: linear-gradient(to direction, color, color, color);}
+to make gradients diagonal, indicate bottom right or left etc or give 
+angle degrees using (numdeg, color, color, etc)
