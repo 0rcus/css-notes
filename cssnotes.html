@@ -1,197 +1,468 @@
-selectors are ways of grabbing and manipulating html.
-                                    ELEMENT selectors
-EX: To grab a paragraph and change its color,
-you would type 
-p {
-    color: red;
-}
-                            CLASS Selector 
-To select elements within a certain class name
-There are class heirarchies
-example <p class="aclass">Some Text</p>
-                            ID Selector 
-superior to class, but can only be used on one element at a time,
-and is selected with the # symbol. It is possible to use more than once though
-example 
-<p id="something">Some Text</p>
+Element Selectors
+    Basics
+        selectors are ways of grabbing and manipulating html.
+        EX: To grab a paragraph and change its color,
+        you would type 
+        p {
+            color: red;
+        }
+    CLASS Selector 
+        To add a class to an element, you'd want to type class="class"
+        example <p class="aclass">Some Text</p>
+    ID Selector 
+        different from class, more specific
+        <p id="something">Some Text</p>
 
- use a # for ids
+        use a # for ids
 
- open brackets for coding
+        
+    Selector Hierarchy
+        class is superior to header
+        id is superior to class
+        inline styling is superior to class
+    HOW TO USE CLASSES AND IDS IN HTML USING CSS
+        prefix for a class is . and you select it by typing its name in 
+        then in the curly brackets u type the properties
+        select ids with #
+        end string with ; when dealing with properties
+ADVANCED SELECTORS
+    General Sibling Selector 
+        selects elements directly after one another in the same family. 
+        Example:
+        USE THIS IN CSS
+        textarea ~ button {
+            
+        }
+        TO CHANGE THIS IN HTML
+        <form>
 
- class is superior to header
- id is superior to class
- inline styling is superior to class
- HOW TO USE CLASSES AND IDS IN HTML USING CSS
-prefix for a class is . and you select it by typing its name in 
-then in the curly brackets u type the properties
-select ids with #
-end string with ; when dealing with properties
-                                ADVANCED SELECTORS
-General Sibling Selector selects elements directly after one another in the same family. 
-Example:
-USE THIS IN CSS
-textarea ~ button {
+            <textarea></textarea>
+            <button>Submit</button>
+        </form>
+    Adjacent Sibling Selector 
+        selects elements that directly follow another element.
+        Example: 
+        USE THIS IN css
+        h2 + a {
+
+        }
+        TO CHANGE THIS IN HTML
+        <h2>Heading 2.</h2>
+        <a href="https://pornhub.com" target="_blank" id="porn">porn</a>
+    CHILD SELECTOR
+        Selects every child of an element.
+        EXAMPLE: 
+        USE THIS IN css
+        ul > li {
+            
+        }
+        TO CHANGE THIS IN <html>
+            <ul>
+                <li>List item.</li>
+            </ul>
+    DESCENDANT SELECTOR
+        Used to select items inside of elements as children
+        EXAMPLE: 
+        Use this in CSS
+        ul li {
+            
+        }
+        TO CHANGE THIS IN html
+        <ul>
+            <li>List item.</li>
+            <li><ol>
+                <li>List Item.</li>
+            </ol></li>
+        </ul>
+     ATTRIBUTE SELECTORS
+        Uses the attributes of elements to change their values
+        EXAMPLE USE THIS IN CSS 
+        img[src="blah.jpg"]
+        p[id="beep"]
+        etc
+        SO 
+        h2[class=subtitle]{
+            color: blue;
+        }
+        Would change this in <HTML>
+        <h2 class="subtitle">Text</h2>
+        to a blue color
+        TO SELECT TWO IMAGES THAT START WITH SAME SOURCE BUT ARENT EXACT
+        DO 
+        img[src^="start of source" {
+            border: 10px black;
+        }
+        it has to be exact
+        but that would change any photo with that starting chain to have a 
+        border
+
+        another way to search is using the * instead of ^, but instead searches for 
+        anywhere in the image.
+        For example, if i had two images 
+        <img src="OIP.jpg">
+        <img src="OENFIANFOIPDAN.jpg">
+        and I used the string 
+        img[src*="OIP"] {}
+        It would still select both because they both contain OIP
+
+        You can add multiple classes to elements seperated by spaces
+        limited to a very small number of attributes using spaces
+
+        <h2 class="subtitle article-subtitle">Text</h2>
+
+        h2[class~=article-subtitle]{
+
+        }
+
+
+GENERAL CSS RULES
+    Selectors & Properties
+        Selectors and properties work together 
+        There are three parts to the selector:
+        The selector itself, 
+        the curly braces,
+        and the properties and values.
+
+        selector {
+            property: value;
+            property2: value2;
+        }
+CSS BLOCK
+    Styles
+        After you select something, you have to define its styles. 
+        Inbetween the curly braces is where the styles go, which is called
+        a block.
+    Property Limit
+        You can have more than one property, which means you could change 
+        background, color, and fontsize all at once.
+        This basic form is kept for almost all css code.
+Coloring Basics
+    Coloring in General and techniques
+        there are colors given by name, and also more than the names
+        there are three different types of colors
+        #1 are the CSS color codes (the names)
+        #2 are the Hex Codes (#19abf5) 3 groups of 2 numbers representing r, g, and b
+        numbers go from 1-9 to a-f which means ff would be most of a color and 11 would be less
+        #3 are RGB codes, which are formatted in r,g,b and the numbers go from 0-255 
+
+COLORING
+        selector {
+            color:color;
+            background:color;
+        }
+        to change background of full page, then put body as selector
+BACKGROUNDS
+    Image Backgrounds
+        to use an image as a background, use the image address 
+        THEN 
+        use property background, then as the value, put url("")
+        and paste the image into the quotations
+        instead of pasting the image address, you can also use a regular 
+        image url, locally
+    Specific Properties
+        You can also use very specific properties that stand for 
+        very specific values
+            background-img, which only works for url("") values
+            background-color, which only works for rgb values
+    Sizing
+        To get rid of image repeating on image backgrounds, you can use
+        background-repeat: no-repeat
+        but that makes it only take up a small box.
+        so, you will need to resize the image using this cmd
+            background-size: height width;
+        or by using the value contain or cover
+        Cover stretches the image to cover the full width
+        contain makes the image as big as it can without messing with proportions
+OPACITY/TRANSPARENCY
+    IN RGB THERE ARE 3 COLOR VALUES AND ONE HIDDEN VALUE KNOWN AS THE ALPHA VALUE
+    THE ALPHA VALUE CONTROLS OPACITY
+    AFTER THE FINAL RGB VALUE, ANY VALUE BETWEEN 0-1 WILL CHANGE OPACITY OF
+    YOUR COLORING
+GRADIENTS
+    Radial gradients 
+        circular
+            Selector {
+                prop: radial-gradient(color min%, color med%, color big%);
+            }
+        to specify shape type the name before colors in the parentheses
+    Linear gradients
+        smooth transitions
+            Selector {
+                prop: linear-gradient(to direction, color, color, color);
+            }
+        to make gradients diagonal, indicate bottom right or left etc or give 
+        angle degrees using (numdeg, color, color, etc)
+UNITS
+        There are two types of units
+    Absolute and Relative Units
+        For example, the px unit in height and width values is absolute
+        this is the same for inches, centimeters, etc.
+        They aren't affected by anything around them.
+        The next type are relative units. These depend on certain elements
+        for example, % units will always make a certain image take up whatever % of your screen.
+        There are a lot of different relative values, but first we will talk about pixels.
+        Pixels are special because although px are absolute, they are also relatively scaled based on what device you are on.
+        The concept of DPI in computing depends on your amount of pixels in the screen.
+        To be basic, high resolution devices will see pixels differently than low pixel devices.
+        For example, a 400px image on an HD TV would be smaller than the same image on a low res device.
+
+    ABSOLUTE UNITS
+        if I was changing font-size
+            I would need to put in a value for the size, such as cm or in.
+            there are also pt, or points which are a little bit bigger than pixels.
+            1 pc, which is similar, is worth 12 points.
+        another one is em. it represents the size relative to the current value of whatever your property is 
+    RELATIVE UNITS
+        some relative units are view width and view height.
+        (vw and vh)
+        These allow you to work with the viewport, which is basically your whole shown screen
+        it almost works the same as percentages, but it is also way different.
+        the problem with absolute units is that they are too specific, and can mess things up
+        if you're using a different device than the site was intended for.
+TEXT MANIPULATION
+        This section will cover text manipulation and font manipulation.
+        Text manipulation is looking at things you can change no matter the font.
+        Underlining, capitalization, etc are not dependent on the font.
+        italics, bolding, and size are all font-dependent
+
+    TEXT Decoration
+        The only real thing you can do with this is change the lining of the text.
+        So, you'd select the text you want to change and Use
+        text-decoration: none; which removes the lines from links
+        text-decoration: line-through; which puts a line through the text
+        or text-decoration: underline/overline, which are self explanatory.
+
+
+    Text Transform
+        so lets say you want to change every word in your text or change its properties
+        you'd use text-transform:
+        and you can use 3 different values for This
+        uppercase, lowercase, and capitalize.
+        capitalize makes every first letter of a word capitalized, and uppercase and lowercase change every character.
+
+    Text Align
+        This is different in the sense that it's not focused on styling or 
+        decorating your text. it's more focused on the justification or alignment of it.
+        There are four main alignments in css
+        use the prop text-align: 
+        and you can use either center, left, right, or justify
+        justify takes all the text, and sets all of the lines the same length.
+        center, left, and right are pretty ez to understand.
+
+FONT SIZE, BOLDING & STYLE 
+    Font size
+        To change font size, you're going to use prop font-size:
+        and then for the value you're going to put any size value, such as em, vw, vh, px, etc.
+
+
+    Font weight
+        What font weight decides is the bolding of a font. The value can change from 0, which is nothing, to infinity.
+        However, most fonts only go up to 800-900.
+        use font-weight
+        and then for the value, just type any number between 0-800
+        it's advised to go up by hundreds when editing this value.
+        400 is considered normal, or default bolding
+
+    Font style
+        Font style is for italicizing. 
+        A way to do that is to create a <span></span> tag around your wanted italicized text
+        give it a class, such as "italics"
+        then select the class in css, 
+        and use property font-style
+        then, you'll want to either set it to normal, italic, or oblique.
+        oblique is just a little bit more italicized
+
+    FONT FAMILIES
+        Font families are collections of fonts that have similar features. 
+        There are 3 default families: serif, sans-serif, and monospace.
+
+        Serif is pretty much default, and it has small lines on the 
+        end of some letters which it makes it hard to read on computer.
+
+        Sans-serif groups are the ones that don't have lines, which means they are far 
+        easier to read.
+
+        Monospace is pretty much where all characters have the same width, 
+        which means they all take up the same space, as opposed to serif or sans-serif
+
+        Good examples of a serif font are Times New Roman and Georgia
+        Sans-Serif fonts would be Arial and Calibri
+        Monospace would be Courier New
+
+        It all just depends on what result you want.
+
+        So, to change font families you're gonna want to use property
+        font-family: 
+        and then as the value you type whatever font you want.
+        after that font, you can set a backup for if your original font doesn't work
+        this is achieved by simply using a comma, and then typing a different font 
+        or your current font's family.
+
+    Including External Fonts with google fonts
+        Your computer will likely come preloaded with a bunch of fonts
+        however, you can get fonts from the internet at
+        https://fonts.google.com
+        you can find a bunch of fonts there.
+
+        select your fonts, and then copy and
+        paste the link tag ABOVE THE STYLE SHEET
+        Then, apply your fonts using the directions stated previously,
+        using the names of your new fonts and blah blah blahb you get it.
+CSS: THE BOX MODEL
+        The CSS Box Model is a series of positioning properties
+        designed to help with layout. Each property works in a different
+        way, and positions the item with different spacing.
+        The Box Model is the most commonly used way to position items.
+
+        The model consists of Content, Padding, Border, and Margin.
+        each layer can be stretched and sized either symmetrically 
+        or asymetrically.
+        The center contains the content, and there is an invisible box 
+        around the content which is made up of three layers.
+
+            Padding
+        Padding represents the space between the content and the border.
+        It's meant to give more room around the content itself, not move 
+        the content around.
+            Border
+        The border is the divider between the padding and margin.
+        It can be styled using a CSS property called border
+            Margin
+        The margin is the space between the border and all other content.
+        it is to give room and spacing around external elements.
+    USING THE BOX MODEL
+            Units to use on a page: 
+        Use pixels or an absolute unit for height, 
+        and then use a relative unit for width.
+        it keeps both values consistent.
+        ex: 
+        item{
+            height: 400px;
+            width: 70vw;
+        }
+    CSS BORDERS
+        There are many different styles for borders, 
+        but it is easier to use the shorthand to style everything
+        at once.
+            How to add a border:
+        item{
+            border: size style color;
+        }
+        Styles for your border include dotted, dashed, solid, and double.
+        
+    CSS Padding and Margin
+        To add margins or padding to the item, you're going to want to first choose
+        something to manipulate.
+        Next, you'll want to use the shorthand margin or padding property
+        item {
+            padding: size;
+            margin: size;
+        }
+
+        Margins add space outside the item, and padding adds it inside.
+            You can also use dashes and the side you want to 
+            add the margins or padding to.
+            ex:
+        item {
+            padding-right: 40px;
+        }
+            At the same time, you can also change all four sides at once
+            by separating values going clockwise starting from the top using spaces.
+        item {
+            margin: top, right, bottom, left;
+            (and if you put just two categories this will happen)
+            margin: top bottom, right left;
+        }
+Float & Display types
+        Two properties we are going to be looking at are 
+            Float 
+            AND
+            Display
+
+        first of all, there are block elements and inline elements.
+        block elements move things into their own category or blocks
+        and inline elements just flow with their block.
+    Float
+        So, what float does is change how the item you've selected 
+        shows on the page. 
+        you can make things float to certain sides of your page
+            ex:
+        item{
+            float: right;
+        }
+        this would move the item to the right of the page, moving the item
+        before it into its blank spot.
+        The next value is inherit, which is used with child elements.
+        so, if there is a div with an image in it, and we set the div's float, then 
+        we can use the inherit value to apply that same value to the child being the image.
+        
+        Then, there is float:none;
+        which does pretty much nothing.
+    Display
+        Display has multiple properties, which all affect your items and how 
+        they appear on your screen.
+        There are multiple values for display, 
+        starting with 
+            display: none;
+        this almost completely deletes your item from view.
+
+        the next display type is 
+            display: inline-block;
+        and what this does is it combines both inline and block properties,
+        which can give it its own space while also not changing how it appears.
+CSS: Flexbox
+        Flexbox covers advanced techniques for formatting your page.
+    Introduction
+        Flexbox stands for 'flexible box'.
+        It is a display type that comes with a range of properties 
+        allowing you to arrange items easily.
+        It's and alternative to using displays, floats, and other 
+        layout properties.
+    Flexbox Components
+        A flexbox element is split into two main parts:
+        the container, and the items.
+        The container is the parent element in which the display type 
+        is active. This is usually in the form of a div.
+        Flex items are the child elements of the container, and they
+        make up the contents of the box.
+    Creating a Flex container
+        flex containers use the display property, and for the value 
+        you put flex.
+    Flex Direction and Wrap
+        with flex items, you can manipulate them with multiple properties.
+        the first is 
+        flex-direction
+        and the values for this property are
+        column, row, etc 
+        and you can add -reverse to your value to reverse it.
+
+        next is 
+        flex-wrap
+        what this does is wrap around to a new line.
+        there are two values for this, being wrap and nowrap
+        you can also reverse your wrap with -reverse on your value.
+    Content alignment (Horizontal)
+        justify-content, which is  responsible for horizontal alignment
+        contains three main values and two special values
+            The three common values are flex-start, flex-end, and center.
+        flex-start is where the container starts,
+        center is the center, 
+        and flex-end is the end of the container.
+            the two special values are 
+        space-around, which creates spacing on all sides of items
+        and space-between, which adds spacing between sides of items.
+    Content alignment (vertical)
+        align-items aligns items vertically, with the same three common
+        values.
+            the two special values for align-items are
+        stretch, and baseline
+        stretch makes an item align all the way through from top to bottom.
+        baseline aligns items to a baseline, meaning no matter the size or font text or whatever,
+        your stuff will stay on the same line.
+    Flex Item Order
+        in html, add the inline element
+        style="order: num ;"
+        and as the value for these properties,
+        you're going to put either a 1,2,4,6, etc 
+        based on what order you want your items to be in 
     
-}
-TO CHANGE THIS IN HTML
-<form>
-    <input type="text" placeholder="Full Name">
-    <input type="email" placeholder="Email">
-    <textarea></textarea>
-    <button>Submit</button>
-</form>
-Adjacent Sibling Selector selects elements that diirectly follow another element.
-Example: 
-USE THIS IN css
-h2 + a {
-
-}
-TO CHANGE THIS IN HTML
-<h2>Heading 2.</h2>
-<a href="https://pornhub.com" target="_blank" id="porn">porn</a>
-CHILD SELECTOR
-Selects every child of an element.
-EXAMPLE: 
-USE THIS IN css
-ul > li {
-    
-}
-TO CHANGE THIS IN <html>
-    <ul>
-        <li>List item.</li>
-    </ul>
-DESCENDANT SELECTOR
-Used to select items inside of elements as children
-EXAMPLE: 
-Use this in CSS
-ul li {
-    
-}
-TO CHANGE THIS IN html
-<ul>
-    <li>List item.</li>
-    <li><ol>
-        <li>List Item.</li>
-    </ol></li>
-</ul>
-ATTRIBUTE SELECTORS
-Uses the attributes of elements to change their values
-EXAMPLE USE THIS IN CSS 
-img[src="blah.jpg"]
-p[id="beep"]
-etc
-SO 
-h2[class=subtitle]{
-    color: blue;
-}
-Would change this in <HTML>
- <h2 class="subtitle">Text</h2>
-to a blue color
-TO SELECT TWO IMAGES THAT START WITH SAME SOURCE BUT ARENT EXACT
-DO 
-img[src^="start of source" {
-    border: 10px black;
-}
-it has to be exact
-but that would change any photo with that starting chain to have a 
-border
-
-another way to search is using the * instead of ^, but instead searches for 
-anywhere in the image.
-For example, if i had two images 
-<img src="OIP.jpg">
-<img src="OENFIANFOIPDAN.jpg">
-and I used the string 
-img[src*="OIP"] {}
-It would still select both because they both contain OIP
-
-You can add multiple classes to elements seperated by spaces
-limited to a very small number of attributes using spaces
-
-<h2 class="subtitle article-subtitle">Text</h2>
-
-h2[class~=article-subtitle]{
-
-}
-
-                                                          PROPERTIES
-Properties are contained within selectors {
-   like this, and they target the element
-}
-They always use a colon and a semicolon
-the colon comes after the property, and the semicolon comes
-after the value.
-
-in color: green; COLOR is the property, and GREEN is the value.
-There are many properties and values, with many different uses
-
-                                    GENERAL CSS RULES
-Selectors and properties work together 
-THERE are three parts to the selector 
-
-The selector itself, 
-the curly braces, and the properties.
-
-selector {
-    property: value;
-    property2: value2;
-}
-                                                                    CSS BLOCK
-After you select something, you have to define its styles. 
-Inbetween the curly braces is where the styles go, which is called
-a block.
-You can have more than one property, which means you could change 
-background, color, and fontsize all at once.
-This basic form is kept for almost all css code.
-                                                                   styling
-Coloring in General and techniques
-there are colors given by name, and also more than the names
-there are three different types of colors
-#1 are the CSS color codes (the names)
-#2 are the Hex Codes (#19abf5) 3 groups of 2 numbers representing r, g, and b
-numbers go from 1-9 to a-f which means ff would be most of a color and 11 would be less
-#3 are RGB codes, which are formatted in r,g,b and the numbers go from 0-255 
-
-                                                                    COLORING TEXT
-selector {
-    color:color;
-    background:color;
-}
-to change background of all, then put body as selector
-                                                                BACKGROUNDS
-to use an image as a background, use the image address 
-THEN 
-use property background, then as the value, put url("")
-and paste the image into the quotations
-instead of pasting the image address, you can also use a regular 
-image url, locally
-
-You can also use very specific properties that stand for 
-very specific values
-    background-img, which only works for url("") values
-    background-color, which only works for rgb values
-
-To get rid of image repeating on image backgrounds, you can use
-background-repeat: no-repeat
-but that makes it only take up a small box.
-so, you will need to resize the image using this cmd
-    background-size: height width;
-or by using the value contain or cover
-Cover stretches the image to cover the full width
-contain makes the image as big as it can without messing with proportions
-                                                                                OPACITY/TRANSPARENCY
-IN RGB THERE ARE 3 COLOR VALUES AND ONE HIDDEN VALUE KNOWN AS THE ALPHA VALUE
-AFTER THE FINAL VALUE, ANY VALUE BETWEEN 0-1 WILL CHANGE OPACITY OF
-YOUR COLORING
-                                                                                GRADIENTS
-Radial gradients are circular
-    Selector {
-        prop: radial-gradient(color min%, color med%, color big%)
-    }
-    to specify shape type the name before colors in the parentheses
-Linear gradients are smooth transitions
-    Selector {
-        prop: linear-gradient(to direction, color, color, color);}
-to make gradients diagonal, indicate bottom right or left etc or give 
-angle degrees using (numdeg, color, color, etc)
